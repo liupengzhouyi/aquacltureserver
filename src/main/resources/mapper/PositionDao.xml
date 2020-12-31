@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.liupengstudy.aquacltureserver.dao.PositionDao">
+
+    <resultMap id="BaseResultMap" type="cn.liupengstudy.aquacltureserver.entity.Position">
+        <!--@Table position-->
+        <result property="positionid" column="positionId" jdbcType="INTEGER"/>
+        <result property="position" column="position" jdbcType="VARCHAR"/>
+        <result property="descriptionPosition" column="description_position" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          positionId, position, description_position
+        from aquacltur.position
+        where positionId = #{positionid}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          positionId, position, description_position
+        from aquacltur.position
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          positionId, position, description_position
+        from aquacltur.position
+        <where>
+            <if test="positionid != null">
+                and positionId = #{positionid}
+            </if>
+            <if test="position != null and position != ''">
+                and position = #{position}
+            </if>
+            <if test="descriptionPosition != null and descriptionPosition != ''">
+                and description_position = #{descriptionPosition}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="positionid" useGeneratedKeys="true">
+        insert into aquacltur.position(position, description_position)
+        values (#{position}, #{descriptionPosition})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update aquacltur.position
+        <set>
+            <if test="position != null and position != ''">
+                position = #{position},
+            </if>
+            <if test="descriptionPosition != null and descriptionPosition != ''">
+                description_position = #{descriptionPosition},
+            </if>
+        </set>
+        where positionId = #{positionid}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from aquacltur.position where positionId = #{positionid}
+    </delete>
+
+</mapper>
