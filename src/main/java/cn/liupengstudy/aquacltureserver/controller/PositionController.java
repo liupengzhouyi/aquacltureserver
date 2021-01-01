@@ -60,5 +60,18 @@ public class PositionController {
         return this.positionService.insert(position);
     }
 
+    /**
+     * delete 单条数据
+     *
+     * @return Boolean
+     */
+    @ApiOperation("删除职位")
+    @RequestMapping(path = "/deletePositionl", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public Boolean deletePositionByID(Position position) {
+        return this.positionService.deleteById(position.getPositionid());
+    }
+
+
+
 
 }
