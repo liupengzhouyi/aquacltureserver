@@ -48,4 +48,13 @@ public class Position implements Serializable {
         this.descriptionPosition = descriptionPosition;
     }
 
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("Position{");
+        sb.append("positionid=").append(positionid);
+        sb.append(", position='").append(position).append('\'');
+        sb.append(", descriptionPosition='").append(descriptionPosition).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
 }
