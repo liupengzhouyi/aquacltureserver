@@ -33,8 +33,8 @@ public class PositionController {
      */
     @ApiOperation("职位查询")
     @RequestMapping(path = "/selectOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public Position selectOne(Integer id) {
-        return this.positionService.queryById(id);
+    public Position selectOne(@RequestBody Position position) {
+        return this.positionService.queryById(position.getPositionid());
     }
 
     /**
@@ -56,7 +56,7 @@ public class PositionController {
      */
     @ApiOperation("添加职位")
     @RequestMapping(path = "/addPositionl", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public Position addPosition(Position position) {
+    public Position addPosition(@RequestBody Position position) {
         return this.positionService.insert(position);
     }
 
@@ -67,11 +67,22 @@ public class PositionController {
      */
     @ApiOperation("删除职位")
     @RequestMapping(path = "/deletePositionl", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public Boolean deletePositionByID(Position position) {
+    public Boolean deletePositionByID(@RequestBody Position position) {
         return this.positionService.deleteById(position.getPositionid());
     }
 
 
+    /**
+     * update 单条数据
+     *
+     * @return Boolean
+     */
+    @ApiOperation("更新职位")
+    @RequestMapping(path = "/updatePositionl", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public Position updatePositionByID(@RequestBody Position position) {
+        System.out.println(position.toString());
+        return this.positionService.update(position);
+    }
 
 
 }
