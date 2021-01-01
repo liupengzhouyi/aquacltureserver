@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.liupengstudy.aquacltureserver.dao.StaffDao">
+
+    <resultMap id="BaseResultMap" type="cn.liupengstudy.aquacltureserver.entity.Staff">
+        <!--@Table staff-->
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="positionId" column="position_id" jdbcType="INTEGER"/>
+        <result property="phoneNumber" column="phone_number" jdbcType="VARCHAR"/>
+        <result property="idCardNumber" column="id_card_number" jdbcType="VARCHAR"/>
+        <result property="wage" column="wage" jdbcType="NUMERIC"/>
+        <result property="entryDate" column="entry_date" jdbcType="TIMESTAMP"/>
+        <result property="separationDate" column="separation_date" jdbcType="TIMESTAMP"/>
+        <result property="isSeparation" column="is_separation" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          id, name, position_id, phone_number, id_card_number, wage, entry_date, separation_date, is_separation
+        from aquacltur.staff
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          id, name, position_id, phone_number, id_card_number, wage, entry_date, separation_date, is_separation
+        from aquacltur.staff
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          id, name, position_id, phone_number, id_card_number, wage, entry_date, separation_date, is_separation
+        from aquacltur.staff
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="positionId != null">
+                and position_id = #{positionId}
+            </if>
+            <if test="phoneNumber != null and phoneNumber != ''">
+                and phone_number = #{phoneNumber}
+            </if>
+            <if test="idCardNumber != null and idCardNumber != ''">
+                and id_card_number = #{idCardNumber}
+            </if>
+            <if test="wage != null">
+                and wage = #{wage}
+            </if>
+            <if test="entryDate != null">
+                and entry_date = #{entryDate}
+            </if>
+            <if test="separationDate != null">
+                and separation_date = #{separationDate}
+            </if>
+            <if test="isSeparation != null">
+                and is_separation = #{isSeparation}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into aquacltur.staff(name, position_id, phone_number, id_card_number, wage, entry_date, separation_date, is_separation)
+        values (#{name}, #{positionId}, #{phoneNumber}, #{idCardNumber}, #{wage}, #{entryDate}, #{separationDate}, #{isSeparation})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update aquacltur.staff
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="positionId != null">
+                position_id = #{positionId},
+            </if>
+            <if test="phoneNumber != null and phoneNumber != ''">
+                phone_number = #{phoneNumber},
+            </if>
+            <if test="idCardNumber != null and idCardNumber != ''">
+                id_card_number = #{idCardNumber},
+            </if>
+            <if test="wage != null">
+                wage = #{wage},
+            </if>
+            <if test="entryDate != null">
+                entry_date = #{entryDate},
+            </if>
+            <if test="separationDate != null">
+                separation_date = #{separationDate},
+            </if>
+            <if test="isSeparation != null">
+                is_separation = #{isSeparation},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from aquacltur.staff where id = #{id}
+    </delete>
+
+</mapper>
