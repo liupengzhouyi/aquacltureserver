@@ -43,6 +43,16 @@ public class PositionServiceImpl implements PositionService {
     }
 
     /**
+     * 查询多条数据
+     *
+     * @return 对象列表
+     */
+    @Override
+    public List<Position> queryAll() {
+        return this.positionDao.queryAll();
+    }
+
+    /**
      * 新增数据
      *
      * @param position 实例对象

@@ -30,17 +30,6 @@
         select
           positionId, position, description_position
         from aquacltur.position
-        <where>
-            <if test="positionid != null">
-                and positionId = #{positionid}
-            </if>
-            <if test="position != null and position != ''">
-                and position = #{position}
-            </if>
-            <if test="descriptionPosition != null and descriptionPosition != ''">
-                and description_position = #{descriptionPosition}
-            </if>
-        </where>
     </select>
 
     <!--新增所有列-->

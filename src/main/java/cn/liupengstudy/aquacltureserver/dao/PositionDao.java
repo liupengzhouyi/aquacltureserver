@@ -31,14 +31,12 @@ public interface PositionDao {
      */
     List<Position> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
 
-
     /**
      * 通过实体作为筛选条件查询
      *
-     * @param position 实例对象
      * @return 对象列表
      */
-    List<Position> queryAll(Position position);
+    List<Position> queryAll();
 
     /**
      * 新增数据

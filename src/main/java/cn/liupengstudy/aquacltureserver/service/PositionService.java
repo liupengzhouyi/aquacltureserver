@@ -29,6 +29,13 @@ public interface PositionService {
     List<Position> queryAllByLimit(int offset, int limit);
 
     /**
+     * 查询多条数据
+     *
+     * @return 对象列表
+     */
+    List<Position> queryAll();
+
+    /**
      * 新增数据
      *
      * @param position 实例对象

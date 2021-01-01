@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 职位表(Position)表控制层
@@ -31,9 +32,21 @@ public class PositionController {
      * @return 单条数据
      */
     @ApiOperation("职位查询")
-    @RequestMapping("selectOne")
+    @RequestMapping(path = "/selectOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public Position selectOne(Integer id) {
-        return this.positionService.queryById(1);
+        return this.positionService.queryById(id);
     }
+
+    /**
+     * 通过主键查询单条数据
+     *
+     * @return 单条数据
+     */
+    @ApiOperation("查询所有职位")
+    @RequestMapping(path = "/selectAll", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public List<Position> selectAll() {
+        return this.positionService.queryAll();
+    }
+
 
 }
