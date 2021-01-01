@@ -49,4 +49,16 @@ public class PositionController {
     }
 
 
+    /**
+     * 添加单条数据
+     *
+     * @return 单条数据
+     */
+    @ApiOperation("添加职位")
+    @RequestMapping(path = "/addPositionl", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public Position addPosition(Position position) {
+        return this.positionService.insert(position);
+    }
+
+
 }
