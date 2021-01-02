@@ -25,3 +25,15 @@ create table staff
 )
     comment '员工表';
 
+create table finance
+(
+    id int auto_increment comment '自增ID',
+    income_and_expenditure_type int default 0 not null comment '收入支出',
+    number double default 0 not null comment '数额',
+    why varchar(100) not null comment '缘由',
+    note varchar(200) not null comment '备注',
+    constraint finance_pk
+        primary key (id)
+)
+    comment '财务数据表';
+
