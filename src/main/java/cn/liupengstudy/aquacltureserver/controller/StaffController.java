@@ -14,9 +14,9 @@ import java.util.List;
  * 员工表(Staff)表控制层
  *
  * @author liupeng
- * @since 2021-01-02 15:57:26
+ * @since 2021-01-02 16:21:08
  */
-@Api(tags = {"管理"})
+@Api(tags = {"员工管理"})
 @RestController
 @RequestMapping("staff")
 public class StaffController {
@@ -32,7 +32,7 @@ public class StaffController {
      * @param staff 
      * @return 单条数据
      */
-    @ApiOperation("添加")
+    @ApiOperation("添加员工")
     @RequestMapping(path = "addOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public Staff addOne(@RequestBody Staff staff) {
         return this.staffService.insert(staff);
@@ -44,7 +44,7 @@ public class StaffController {
      * @param staff 
      * @return 单条数据
      */
-    @ApiOperation("通过ID删除信息")
+    @ApiOperation("通过ID删除员工信息")
     @RequestMapping(path = "deleteOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public Boolean deleteOne(@RequestBody Staff staff) {
         return this.staffService.deleteById(staff.getId());
@@ -56,7 +56,7 @@ public class StaffController {
      * @param staff 
      * @return 单条数据
      */
-    @ApiOperation("更新信息")
+    @ApiOperation("员工更新信息")
     @RequestMapping(path = "updateOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public Staff updateOne(@RequestBody Staff staff) {
         return this.staffService.update(staff);
@@ -65,10 +65,10 @@ public class StaffController {
     /**
      * 通过主键查询单条数据
      *
-     * @param 
+     * @param staff
      * @return 单条数据
      */
-    @ApiOperation("通过ID查询单一")
+    @ApiOperation("通过ID查询单一员工")
     @RequestMapping(path = "selectOne", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public Staff selectOne(@RequestBody Staff staff) {
         return this.staffService.queryById(staff.getId());
@@ -79,11 +79,53 @@ public class StaffController {
      *
      * @return List<Staff>
      */
-    @ApiOperation("查询全部")
+    @ApiOperation("查询全部员工")
     @RequestMapping(path = "queryAll", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public List<Staff> queryAll() {
         return this.staffService.queryAll();
     }
+    
+    
+    /**
+     * 关键字段查询数据
+     *
+     * @param staff
+     * @return List<Staff>
+     */
+    @ApiOperation("关键字Name查询员工")
+    @RequestMapping(path = "queryByName", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public List<Staff> queryBySomethingName(@RequestBody Staff staff) {
+        System.out.println(staff.toString());
+        return this.staffService.queryByName(staff);
+    }
+
+    /**
+     * 关键字段查询数据
+     *
+     * @param staff
+     * @return List<Staff>
+     */
+    @ApiOperation("关键字IDCard查询员工")
+    @RequestMapping(path = "queryByIDCard", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public List<Staff> queryBySomethingIDCard(@RequestBody Staff staff) {
+        System.out.println(staff.toString());
+        return this.staffService.queryByIDCard(staff);
+    }
+
+    /**
+     * 关键字段查询数据
+     *
+     * @param staff
+     * @return List<Staff>
+     */
+    @ApiOperation("关键字PhoneNUmber查询员工")
+    @RequestMapping(path = "queryByPhoneNumber", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public List<Staff> queryByPhoneNumber(@RequestBody Staff staff) {
+        System.out.println(staff.toString());
+        return this.staffService.queryByPhoneNumber(staff);
+    }
+    
+    
     
     
     

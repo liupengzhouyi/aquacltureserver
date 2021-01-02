@@ -76,6 +76,43 @@
         where id = #{id}
     </update>
 
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryByName" resultMap="BaseResultMap">
+        select
+          id, name, position_id, phone_number, id_card_number, wage, entry_date, separation_date, is_separation
+        from aquacltur.staff
+        <where>
+            <if test="name != null and name != ''">
+                name = #{name}
+            </if>
+        </where>
+    </select>
+
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryByIDCard" resultMap="BaseResultMap">
+        select
+        id, name, position_id, phone_number, id_card_number, wage, entry_date, separation_date, is_separation
+        from aquacltur.staff
+        <where>
+            <if test="idCardNumber != null and idCardNumber != ''">
+                id_card_number = #{idCardNumber}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryByPhoneNumber" resultMap="BaseResultMap">
+        select
+        id, name, position_id, phone_number, id_card_number, wage, entry_date, separation_date, is_separation
+        from aquacltur.staff
+        <where>
+            <if test="phoneNumber != null and phoneNumber != ''">
+                phone_number = #{phoneNumber}
+            </if>
+        </where>
+    </select>
+
+
     <!--通过主键删除-->
     <delete id="deleteById">
         delete from aquacltur.staff where id = #{id}

@@ -7,7 +7,7 @@ import java.util.List;
  * 员工表(Staff)表服务接口
  *
  * @author liupeng
- * @since 2021-01-02 15:46:01
+ * @since 2021-01-02 16:18:03
  */
 public interface StaffService {
 
@@ -35,6 +35,16 @@ public interface StaffService {
      */
     List<Staff> queryAll();
     
+    /**
+     * 通过实体作为筛选条件查询
+     *
+     * @return 对象列表
+     */
+    List<Staff> queryByName(Staff staff);
+
+    List<Staff> queryByIDCard(Staff staff);
+
+    List<Staff> queryByPhoneNumber(Staff staff);
     /**
      * 新增数据
      *

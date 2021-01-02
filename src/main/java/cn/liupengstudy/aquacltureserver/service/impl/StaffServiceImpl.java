@@ -12,7 +12,7 @@ import java.util.List;
  * 员工表(Staff)表服务实现类
  *
  * @author liupeng
- * @since 2021-01-02 15:46:02
+ * @since 2021-01-02 16:18:04
  */
 @Service("staffService")
 public class StaffServiceImpl implements StaffService {
@@ -74,6 +74,29 @@ public class StaffServiceImpl implements StaffService {
     public Staff update(Staff staff) {
         this.staffDao.update(staff);
         return this.queryById(staff.getId());
+    }
+    
+    
+
+    /**
+     * 通过实体作为筛选条件查询
+     *
+     * @param staff
+     * @return 对象列表
+     */
+    @Override
+    public List<Staff> queryByName(Staff staff) {
+        return this.staffDao.queryByName(staff);
+    }
+
+    @Override
+    public List<Staff> queryByIDCard(Staff staff) {
+        return this.staffDao.queryByIDCard(staff);
+    }
+
+    @Override
+    public List<Staff> queryByPhoneNumber(Staff staff) {
+        return this.staffDao.queryByPhoneNumber(staff);
     }
 
     /**

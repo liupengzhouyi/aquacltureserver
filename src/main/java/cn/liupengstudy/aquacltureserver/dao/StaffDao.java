@@ -9,7 +9,7 @@ import java.util.List;
  * 员工表(Staff)表数据库访问层
  *
  * @author liupeng
- * @since 2021-01-02 15:46:00
+ * @since 2021-01-02 16:29:15
  */
 @Mapper
 public interface StaffDao {
@@ -33,7 +33,7 @@ public interface StaffDao {
 
 
     /**
-     * 通过实体作为筛选条件查询
+     * 查询全部
      *
      * @return 对象列表
      */
@@ -55,6 +55,20 @@ public interface StaffDao {
      */
     int update(Staff staff);
 
+
+
+    /**
+     * 通过实体作为筛选条件查询
+     *
+     * @return 对象列表
+     */
+    List<Staff> queryByName(Staff staff);
+
+    List<Staff> queryByIDCard(Staff staff);
+
+
+    List<Staff> queryByPhoneNumber(Staff staff);
+    
     /**
      * 通过主键删除数据
      *

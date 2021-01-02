@@ -7,10 +7,10 @@ import java.io.Serializable;
  * 员工表(Staff)实体类
  *
  * @author liupeng
- * @since 2021-01-02 15:45:59
+ * @since 2021-01-02 16:18:01
  */
 public class Staff implements Serializable {
-    private static final long serialVersionUID = -31848280342653076L;
+    private static final long serialVersionUID = -50650684381117917L;
     /**
     * 自增ID
     */
@@ -121,4 +121,20 @@ public class Staff implements Serializable {
         this.isSeparation = isSeparation;
     }
 
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("Staff{");
+        sb.append("id=").append(id);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", positionId=").append(positionId);
+        sb.append(", phoneNumber='").append(phoneNumber).append('\'');
+        sb.append(", idCardNumber='").append(idCardNumber).append('\'');
+        sb.append(", wage=").append(wage);
+        sb.append(", entryDate=").append(entryDate);
+        sb.append(", separationDate=").append(separationDate);
+        sb.append(", isSeparation=").append(isSeparation);
+        sb.append('}');
+        return sb.toString();
+    }
 }
