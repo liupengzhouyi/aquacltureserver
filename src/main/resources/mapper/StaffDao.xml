@@ -36,35 +36,6 @@
         select
           id, name, position_id, phone_number, id_card_number, wage, entry_date, separation_date, is_separation
         from aquacltur.staff
-        <where>
-            <if test="id != null">
-                and id = #{id}
-            </if>
-            <if test="name != null and name != ''">
-                and name = #{name}
-            </if>
-            <if test="positionId != null">
-                and position_id = #{positionId}
-            </if>
-            <if test="phoneNumber != null and phoneNumber != ''">
-                and phone_number = #{phoneNumber}
-            </if>
-            <if test="idCardNumber != null and idCardNumber != ''">
-                and id_card_number = #{idCardNumber}
-            </if>
-            <if test="wage != null">
-                and wage = #{wage}
-            </if>
-            <if test="entryDate != null">
-                and entry_date = #{entryDate}
-            </if>
-            <if test="separationDate != null">
-                and separation_date = #{separationDate}
-            </if>
-            <if test="isSeparation != null">
-                and is_separation = #{isSeparation}
-            </if>
-        </where>
     </select>
 
     <!--新增所有列-->

@@ -6,8 +6,8 @@ import java.util.List;
 /**
  * 员工表(Staff)表服务接口
  *
- * @author makejava
- * @since 2021-01-02 01:04:06
+ * @author liupeng
+ * @since 2021-01-02 15:46:01
  */
 public interface StaffService {
 
@@ -28,6 +28,13 @@ public interface StaffService {
      */
     List<Staff> queryAllByLimit(int offset, int limit);
 
+    /**
+     * 查询多条数据
+     *
+     * @return 对象列表
+     */
+    List<Staff> queryAll();
+    
     /**
      * 新增数据
      *

@@ -6,11 +6,11 @@ import java.io.Serializable;
 /**
  * 员工表(Staff)实体类
  *
- * @author makejava
- * @since 2021-01-02 01:04:04
+ * @author liupeng
+ * @since 2021-01-02 15:45:59
  */
 public class Staff implements Serializable {
-    private static final long serialVersionUID = -51054361928643130L;
+    private static final long serialVersionUID = -31848280342653076L;
     /**
     * 自增ID
     */

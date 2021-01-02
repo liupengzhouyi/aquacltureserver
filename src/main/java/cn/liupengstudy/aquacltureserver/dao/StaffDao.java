@@ -8,8 +8,8 @@ import java.util.List;
 /**
  * 员工表(Staff)表数据库访问层
  *
- * @author makejava
- * @since 2021-01-02 01:04:05
+ * @author liupeng
+ * @since 2021-01-02 15:46:00
  */
 @Mapper
 public interface StaffDao {
@@ -21,7 +21,7 @@ public interface StaffDao {
      * @return 实例对象
      */
     Staff queryById(Integer id);
-
+    
     /**
      * 查询指定行数据
      *
@@ -35,10 +35,9 @@ public interface StaffDao {
     /**
      * 通过实体作为筛选条件查询
      *
-     * @param staff 实例对象
      * @return 对象列表
      */
-    List<Staff> queryAll(Staff staff);
+    List<Staff> queryAll();
 
     /**
      * 新增数据

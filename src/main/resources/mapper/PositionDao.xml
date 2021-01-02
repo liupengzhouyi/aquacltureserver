@@ -17,19 +17,19 @@
         where positionId = #{positionid}
     </select>
 
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+            positionId, position, description_position
+        from aquacltur.position
+    </select>
+
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="BaseResultMap">
         select
           positionId, position, description_position
         from aquacltur.position
         limit #{offset}, #{limit}
-    </select>
-
-    <!--通过实体作为筛选条件查询-->
-    <select id="queryAll" resultMap="BaseResultMap">
-        select
-          positionId, position, description_position
-        from aquacltur.position
     </select>
 
     <!--新增所有列-->
