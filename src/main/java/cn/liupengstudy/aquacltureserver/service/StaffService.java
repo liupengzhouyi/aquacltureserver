@@ -45,6 +45,12 @@ public interface StaffService {
     List<Staff> queryByIDCard(Staff staff);
 
     List<Staff> queryByPhoneNumber(Staff staff);
+
+    List<Staff> queryOnJob(Staff staff);
+
+    List<Staff> queryResignedEmployees(Staff staff);
+
+
     /**
      * 新增数据
      *

@@ -99,6 +99,16 @@ public class StaffServiceImpl implements StaffService {
         return this.staffDao.queryByPhoneNumber(staff);
     }
 
+    @Override
+    public List<Staff> queryOnJob(Staff staff) {
+        return this.staffDao.queryOnJob(staff);
+    }
+
+    @Override
+    public List<Staff> queryResignedEmployees(Staff staff) {
+        return this.staffDao.queryResignedEmployees(staff);
+    }
+
     /**
      * 通过主键删除数据
      *

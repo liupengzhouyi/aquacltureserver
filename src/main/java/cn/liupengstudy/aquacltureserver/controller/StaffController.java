@@ -98,7 +98,6 @@ public class StaffController {
     @ApiOperation("关键字Name查询员工")
     @RequestMapping(path = "queryByName", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public List<Staff> queryBySomethingName(@RequestBody Staff staff) {
-        System.out.println(staff.toString());
         return this.staffService.queryByName(staff);
     }
 
@@ -111,7 +110,6 @@ public class StaffController {
     @ApiOperation("关键字IDCard查询员工")
     @RequestMapping(path = "queryByIDCard", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public List<Staff> queryBySomethingIDCard(@RequestBody Staff staff) {
-        System.out.println(staff.toString());
         return this.staffService.queryByIDCard(staff);
     }
 
@@ -124,9 +122,33 @@ public class StaffController {
     @ApiOperation("关键字PhoneNUmber查询员工")
     @RequestMapping(path = "queryByPhoneNumber", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public List<Staff> queryByPhoneNumber(@RequestBody Staff staff) {
-        System.out.println(staff.toString());
         return this.staffService.queryByPhoneNumber(staff);
     }
+
+    /**
+     * 查询在职员工查询离职员工
+     *
+     * @param staff
+     * @return List<Staff>
+     */
+    @ApiOperation("查询在职员工")
+    @RequestMapping(path = "queryOnJob", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public List<Staff> queryOnJob(@RequestBody Staff staff) {
+        return this.staffService.queryByPhoneNumber(staff);
+    }
+
+    /**
+     * 查询离职员工
+     *
+     * @param staff
+     * @return List<Staff>
+     */
+    @ApiOperation("查询离职员工")
+    @RequestMapping(path = "queryResignedEmployees", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public List<Staff> queryResignedEmployees(@RequestBody Staff staff) {
+        return this.staffService.queryByPhoneNumber(staff);
+    }
+
 
     /**
      * 办理员工离职
@@ -143,9 +165,5 @@ public class StaffController {
         staff.setSeparationDate(date);
         return this.staffService.update(staff);
     }
-    
-    
-    
-    
 
 }

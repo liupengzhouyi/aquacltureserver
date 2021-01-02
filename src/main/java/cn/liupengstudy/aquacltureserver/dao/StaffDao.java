@@ -66,9 +66,12 @@ public interface StaffDao {
 
     List<Staff> queryByIDCard(Staff staff);
 
-
     List<Staff> queryByPhoneNumber(Staff staff);
-    
+
+    List<Staff> queryOnJob(Staff staff);
+
+    List<Staff> queryResignedEmployees(Staff staff);
+
     /**
      * 通过主键删除数据
      *

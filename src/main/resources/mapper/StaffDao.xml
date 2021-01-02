@@ -112,6 +112,25 @@
         </where>
     </select>
 
+    <select id="queryOnJob" resultMap="BaseResultMap">
+        select
+        id, name, position_id, phone_number, id_card_number, wage, entry_date, separation_date, is_separation
+        from aquacltur.staff where is_separation = 0
+
+    </select>
+
+    <select id="queryResignedEmployees" resultMap="BaseResultMap">
+        select
+            id, name, position_id, phone_number, id_card_number, wage, entry_date, separation_date, is_separation
+        from aquacltur.staff where is_separation = 1
+
+    </select>
+
+
+
+
+
+
 
     <!--通过主键删除-->
     <delete id="deleteById">
