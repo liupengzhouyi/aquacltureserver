@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.liupengstudy.aquacltureserver.dao.FinanceDao">
+
+    <resultMap id="BaseResultMap" type="cn.liupengstudy.aquacltureserver.entity.Finance">
+        <!--@Table finance-->
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="incomeAndExpenditureType" column="income_and_expenditure_type" jdbcType="INTEGER"/>
+        <result property="number" column="number" jdbcType="NUMERIC"/>
+        <result property="why" column="why" jdbcType="VARCHAR"/>
+        <result property="note" column="note" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          id, income_and_expenditure_type, number, why, note
+        from aquacltur.finance
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          id, income_and_expenditure_type, number, why, note
+        from aquacltur.finance
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          id, income_and_expenditure_type, number, why, note
+        from aquacltur.finance
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into aquacltur.finance(income_and_expenditure_type, number, why, note)
+        values (#{incomeAndExpenditureType}, #{number}, #{why}, #{note})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update aquacltur.finance
+        <set>
+            <if test="incomeAndExpenditureType != null">
+                income_and_expenditure_type = #{incomeAndExpenditureType},
+            </if>
+            <if test="number != null">
+                number = #{number},
+            </if>
+            <if test="why != null and why != ''">
+                why = #{why},
+            </if>
+            <if test="note != null and note != ''">
+                note = #{note},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+    
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from aquacltur.finance where id = #{id}
+    </delete>
+
+</mapper>
