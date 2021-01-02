@@ -8,6 +8,9 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -124,8 +127,22 @@ public class StaffController {
         System.out.println(staff.toString());
         return this.staffService.queryByPhoneNumber(staff);
     }
-    
-    
+
+    /**
+     * 办理员工离职
+     *
+     * @param staff
+     * @return Staff
+     */
+    @ApiOperation("办理员工离职")
+    @RequestMapping(path = "employeeResignation", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public Staff employeeResignation (@RequestBody Staff staff) {
+        Calendar calendar = Calendar.getInstance();
+        Date date = calendar.getTime();
+        staff.setIsSeparation(1);
+        staff.setSeparationDate(date);
+        return this.staffService.update(staff);
+    }
     
     
     
