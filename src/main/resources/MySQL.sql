@@ -37,3 +37,20 @@ create table finance
 )
     comment '财务数据表';
 
+create table abstract_financial_data
+(
+    id int auto_increment comment '自增ID',
+    livesto_species varchar(50) not null comment '牲畜种类',
+    number_of_changes int default 0 not null comment '变动数量',
+    why varchar(200) not null comment '变动原因',
+    number int default 0 not null comment '总值',
+    constraint abstract_financial_data_pk
+        primary key (id)
+)
+    comment '抽象财务数据';
+
+create unique index abstract_financial_data_number_of_changes_uindex
+	on abstract_financial_data (number_of_changes);
+
+
+
