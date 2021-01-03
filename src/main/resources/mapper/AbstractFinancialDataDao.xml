@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.liupengstudy.aquacltureserver.dao.AbstractFinancialDataDao">
+
+    <resultMap id="BaseResultMap" type="cn.liupengstudy.aquacltureserver.entity.AbstractFinancialData">
+        <!--@Table abstract_financial_data-->
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="livestoSpecies" column="livesto_species" jdbcType="VARCHAR"/>
+        <result property="numberOfChanges" column="number_of_changes" jdbcType="INTEGER"/>
+        <result property="why" column="why" jdbcType="VARCHAR"/>
+        <result property="number" column="number" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          id, livesto_species, number_of_changes, why, number
+        from aquacltur.abstract_financial_data
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          id, livesto_species, number_of_changes, why, number
+        from aquacltur.abstract_financial_data
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          id, livesto_species, number_of_changes, why, number
+        from aquacltur.abstract_financial_data
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into aquacltur.abstract_financial_data(livesto_species, number_of_changes, why, number)
+        values (#{livestoSpecies}, #{numberOfChanges}, #{why}, #{number})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update aquacltur.abstract_financial_data
+        <set>
+            <if test="livestoSpecies != null and livestoSpecies != ''">
+                livesto_species = #{livestoSpecies},
+            </if>
+            <if test="numberOfChanges != null">
+                number_of_changes = #{numberOfChanges},
+            </if>
+            <if test="why != null and why != ''">
+                why = #{why},
+            </if>
+            <if test="number != null">
+                number = #{number},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+    
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from aquacltur.abstract_financial_data where id = #{id}
+    </delete>
+
+</mapper>
