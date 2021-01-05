@@ -1,51 +1,63 @@
 package cn.liupengstudy.aquacltureserver.entity;
 
 import java.util.Date;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 /**
  * 员工表(Staff)实体类
  *
  * @author liupeng
- * @since 2021-01-02 16:18:01
+ * @since 2021-01-05 20:48:08
  */
+@ApiModel(value = "员工表实体类")
 public class Staff implements Serializable {
-    private static final long serialVersionUID = -50650684381117917L;
+    private static final long serialVersionUID = 682989443399704886L;
     /**
     * 自增ID
     */
+    @ApiModelProperty(value = "自增ID")
     private Integer id;
     /**
     * 姓名
     */
+    @ApiModelProperty(value = "姓名")
     private String name;
     /**
     * 职位
     */
+    @ApiModelProperty(value = "职位")
     private Integer positionId;
     /**
     * 联系方式
     */
+    @ApiModelProperty(value = "联系方式")
     private String phoneNumber;
     /**
     * 身份证号码
     */
+    @ApiModelProperty(value = "身份证号码")
     private String idCardNumber;
     /**
     * 工资
     */
+    @ApiModelProperty(value = "工资")
     private Double wage;
     /**
     * 入职日期
     */
+    @ApiModelProperty(value = "入职日期")
     private Date entryDate;
     /**
     * 离职日期
     */
+    @ApiModelProperty(value = "离职日期")
     private Date separationDate;
     /**
     * 是否离职
     */
+    @ApiModelProperty(value = "是否离职")
     private Integer isSeparation;
 
 
@@ -121,20 +133,4 @@ public class Staff implements Serializable {
         this.isSeparation = isSeparation;
     }
 
-
-    @Override
-    public String toString() {
-        final StringBuffer sb = new StringBuffer("Staff{");
-        sb.append("id=").append(id);
-        sb.append(", name='").append(name).append('\'');
-        sb.append(", positionId=").append(positionId);
-        sb.append(", phoneNumber='").append(phoneNumber).append('\'');
-        sb.append(", idCardNumber='").append(idCardNumber).append('\'');
-        sb.append(", wage=").append(wage);
-        sb.append(", entryDate=").append(entryDate);
-        sb.append(", separationDate=").append(separationDate);
-        sb.append(", isSeparation=").append(isSeparation);
-        sb.append('}');
-        return sb.toString();
-    }
 }
