@@ -53,4 +53,18 @@ create unique index abstract_financial_data_number_of_changes_uindex
 	on abstract_financial_data (number_of_changes);
 
 
+create table depreciation_maintenance
+(
+    id int auto_increment comment ' 自增ID',
+    project_name varchar(100) not null comment '项目名称',
+    why varchar(200) not null comment '维护原因',
+    spending double not null comment '花费',
+    ordImg varchar(200) not null comment '旧照片',
+    newImg varchar(200) not null comment '新照片',
+    constraint depreciation_maintenance_pk
+        primary key (id)
+)
+    comment '折旧维护数据库';
+
+
 
