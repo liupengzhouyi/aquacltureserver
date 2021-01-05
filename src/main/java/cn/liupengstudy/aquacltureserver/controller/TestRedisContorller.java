@@ -39,9 +39,12 @@ public class TestRedisContorller {
 
     @ApiOperation("TestRedisGet")
     @RequestMapping(path = "TestRedisGet", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public String employeeResignationGet () {
-        String value = redisTemplate.opsForValue().get("aaa").toString();
-        return value;
+    public Staff employeeResignationGet () {
+        System.out.println(redisTemplate.opsForValue().get("aaa"));
+        String value = (String) redisTemplate.opsForValue().get("aaa");
+        Staff staff = new Staff();
+        staff.setName(value);
+        return staff;
     }
 
 
